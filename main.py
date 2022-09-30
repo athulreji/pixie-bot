@@ -18,6 +18,14 @@ class MyClient(discord.Client):
             to_send = f'Welcome {member.mention} to {guild.name}!'
             await guild.system_channel.send(to_send)
 
+    async def on_message(self, message):
+        if message.author.id == self.user.id:
+            return
+
+        if message.content.startswith('!hello'):
+            await message.reply('Hello!', mention_author=True)
+
+
 
 #  code for the bot to send a hi when someone says hi       
     async def on_message(self, message):
@@ -31,6 +39,7 @@ class MyClient(discord.Client):
 
 intents = discord.Intents.default()
 intents.members = True
+intents.message_content = True
 
 client = MyClient(intents=intents)
 client.run(TOKEN)
