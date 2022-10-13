@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-
+#to login the bot using token
 class MyClient(discord.Client):
     async def on_ready(self):
         print(f'Logged in as {self.user} (ID: {self.user.id})')
@@ -21,7 +21,7 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.author.id == self.user.id:
             return
-
+#to react to message if client uses a message which starts with hi
         if message.content.startswith('!hello'):
             await message.reply('Hello!', mention_author=True)
 
