@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
+#myclient
 #to login the bot using token
 class MyClient(discord.Client):
     async def on_ready(self):
